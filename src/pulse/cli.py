@@ -6,9 +6,8 @@ class VolumeAction(argparse.Action):
   def __call__(self, parser, namespace, values, option_string=None):
     diff_value = values
     if diff_value>0.5:
+      print "the inc/dec value should be less than 0.5"
       sys.exit(2)
-    print "option_strin is %s" % parser
-    print "Values are %s" % values
     if option_string=="--dec":
       namespace.dec=diff_value
     if option_string=="--inc":
@@ -27,3 +26,16 @@ def create_parser():
   args = parser.parse_args()
 
   return parser
+
+
+def main():
+  from pulse import pulse as mpulse 
+  args = create_parser().parse_args()
+  if args.inc:
+    mpulse.manage_volume(args.inc)
+  if args.dec:
+    mpulse.manage_volume(-args.dec)
+  if args.dock:
+    mpulse.manage_docking("dock")
+  if args.undock:
+    mpulse.manage_docking("undock")

@@ -4,7 +4,7 @@ with open('Readme.rst', 'r') as f:
   readme = f.read()
 
 setup(
-  name='pgbackup',
+  name='pulse',
   version='0.1',
   description='manage pulse stuff',
   long_description=readme,
@@ -12,5 +12,10 @@ setup(
   author_email='ezziepat@gmail.com',
   packages=find_packages('src'),
   package_dir={'': 'src'},
-  install_requires=[]
+  install_requires=['pulsectl'],
+  entry_points={
+    'console_scripts': [
+       'pulse=pulse.cli:main',
+    ]
+  }
 )
