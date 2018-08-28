@@ -15,7 +15,7 @@ setup(
   install_requires=['pulsectl'],
   entry_points={
     'console_scripts': [
-       'pulse=pulse.cli:main',
+       'manage_pulse=pulse.cli:main',
     ]
   }
 )
