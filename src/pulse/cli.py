@@ -29,7 +29,7 @@ def create_parser():
 
 
 def main():
-  from pulse import pulse as mpulse 
+  import pulse as mpulse 
   args = create_parser().parse_args()
   if args.inc:
     mpulse.manage_volume(args.inc)
